@@ -1,0 +1,67 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="180"
+    alt="For The Record Logo"
+    src="../assets/FTR-LOGO-INLINE_COL-2x.png"
+  />
+    <div class="spacer"></div>
+</div>
+
+<div class="content" role="main">
+
+  <!-- Resources -->
+  <h2>Timer Configuration</h2>
+
+  <br/>
+  <div  style="text-align:center">
+    <label for="refreshRate">
+      Please input the number of time in seconds between emitting numbers and their frequency:
+    </label>
+    <br/>
+    <br/>
+    <input (keyup)="onKeyPeriod($event)"  integersOnly id="refreshRate" type="text" [(ngModel)]="timerPeriod" style="width:50px;text-align:center"><span>&nbsp;&nbsp;(seconds)</span>
+    <!-- <button (click)="updateTimerPeriod()">Update Refresh Rate</button> -->
+      <div class="card-container">
+    <div class="card card-small" (click)="updateTimerPeriod()" tabindex="0">
+      <span>Update Refresh Rate</span>
+    </div>
+    </div>
+  </div>
+<br/>
+<div  [hidden]="!timerPeriodSet"  style="text-align:center">
+<h2>Number Analysis</h2>
+  <br/>
+  <div>
+    <label for="newNumber">
+      Please enter the {{numberText}} number:
+    </label>
+    <br/>
+    <br/>
+    <input (keyup)="onKeyNumber($event)"  integersOnly id="newNumber" type="text" [(ngModel)]="newNumber" style="text-align:center">
+    <!-- <button (click)="updateTimerPeriod()">Update Refresh Rate</button> -->
+      <div class="card-container">
+    <div class="card card-small" (click)="addNumber()" tabindex="1">
+      <span>Add Number</span>
+    </div>
+    </div>
+    
+  </div>
+ <span >Refreshing every {{timerPeriodSet}} seconds:</span>
+
+  
+  <!-- Terminal -->
+  <div class="card-container">
+  <div class="terminal">
+      <span style="color:white; word-wrap: break-word">{{numberListText}}</span>
+  </div>
+</div>
+  <br/>
+  <div class="card-container">
+  <div class="card card-small" (click)="toggleTimer()" tabindex="2">
+      <span>{{toggleText}} Timer</span>
+    </div>
+    </div>
+</div>
+</div>
+<router-outlet></router-outlet>
